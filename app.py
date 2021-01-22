@@ -14,9 +14,10 @@ def i():
 
 @app.route("/file/<path:name>")
 def index(name):
+
     f = getfile(name)
 
-    if f[1] == 200:
+    if f[1] == 200 and name[0:3] == 'src':
 
         fileList = f[0][0]
         folderList = f[0][1]
