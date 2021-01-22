@@ -16,8 +16,3 @@ def reloadFileConfig():
             print('*'.join(fileList[i][1]))
             f.write('*'.join(fileList[i][1]) + '\n')
             f.write('*'.join(fileList[i][2]) + '\n')
-
-
-if __name__ == '__main__':
-    print('a')
-    reloadFileConfig()

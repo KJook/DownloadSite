@@ -1,12 +1,14 @@
 from flask import Flask, render_template, url_for
 from common.fileMaster import getfile, getsize, toSrc_floder
 from common.item import getImg
+from main import reloadFileConfig
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def i():
+    reloadFileConfig()
     return render_template('index.html')
 
 
