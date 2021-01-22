@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="2300px"
+	 height="1600px" viewBox="0 0 2300 1600" enable-background="new 0 0 2300 1600" xml:space="preserve">
+<g id="Spicchi_sotto_e_lato">
+</g>
+<g id="luna">
+	<g>
+		<defs>
+			<rect id="SVGID_3_" x="-4970.769" y="-5278.681" width="2000" height="1000"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_3_"  overflow="visible"/>
+		</clipPath>
+		<path clip-path="url(#SVGID_2_)" fill="#CCCCCC" d="M1212.564,160.319c0-2750.939-2064.874-4981-4612.037-4981
+			c-2547.157,0-4612.037,2230.061-4612.037,4981s2064.88,4981,4612.037,4981C-852.31,5141.319,1212.564,2911.257,1212.564,160.319z"
+			/>
+	</g>
+</g>
+<g id="Orizzontale_dark">
+</g>
+<g id="Quadrato1">
+</g>
+<g id="Quadrato2">
+</g>
+<g id="Quadrato3">
+</g>
+<g id="Quadrato4">
+</g>
+<g id="Mobile">
+	<g>
+		<defs>
+			<rect id="SVGID_15_" x="49.231" y="-1885.681" width="906" height="1341"/>
+		</defs>
+		<clipPath id="SVGID_4_">
+			<use xlink:href="#SVGID_15_"  overflow="visible"/>
+		</clipPath>
+		<circle clip-path="url(#SVGID_4_)" fill="#F3F3F3" cx="502.504" cy="-520.385" r="587.804"/>
+	</g>
+</g>
+<g id="Tablet">
+	<path fill="#6C757D" d="M2300.231,1450.319c0,82.843-67.274,150-150.262,150H150.493c-82.987,0-150.262-67.157-150.262-150v-1300
+		c0-82.843,67.274-150,150.262-150H2149.97c82.987,0,150.262,67.157,150.262,150V1450.319z"/>
+	<g>
+		<defs>
+			<rect id="SVGID_17_" x="105.231" y="103.319" width="2090" height="1392"/>
+		</defs>
+		<clipPath id="SVGID_6_">
+			<use xlink:href="#SVGID_17_"  overflow="visible"/>
+		</clipPath>
+		<path clip-path="url(#SVGID_6_)" fill="#CCCCCC" d="M2227.638,857.727c0-654.243-538.041-1184.61-1201.746-1184.61
+			S-175.854,203.483-175.854,857.727c0,654.245,538.041,1184.61,1201.746,1184.61S2227.638,1511.972,2227.638,857.727z"/>
+		<ellipse clip-path="url(#SVGID_6_)" fill="#F3F3F3" cx="105.493" cy="1495.202" rx="607.987" ry="599.318"/>
+		<path clip-path="url(#SVGID_6_)" fill="#F3F3F3" d="M3873.897,102.991c0-913.996-751.649-1654.932-1678.861-1654.932
+			c-927.217,0-1678.868,740.936-1678.868,1654.932c0,913.989,751.651,1654.922,1678.868,1654.922
+			C3122.248,1757.913,3873.897,1016.98,3873.897,102.991z"/>
+		<ellipse clip-path="url(#SVGID_6_)" fill="#CCCCCC" cx="2194.892" cy="103.727" rx="610.548" ry="601.843"/>
+	</g>
+</g>
+<g id="Orizzontale_light">
+</g>
+</svg>

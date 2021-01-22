@@ -1,4 +1,15 @@
-src
-.DS_Store*FAA0BFECE235F8BAE6E37AB22D858A60.jpg*Screenshot_1610452577.png*完工.ass
-src/aaa
+static/src
+.DS_Store*config.txt*config 2.txt*config 3.txt
+f3*f2*f1
+static/src/f3
+config.txt*config 2.txt
+
+static/src/f2
+
+
+static/src/f1
+.DS_Store* .gif
+f4
+static/src/f1/f4
+
 

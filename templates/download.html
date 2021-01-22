@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DownLoad</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="images/Favicon.png">
+<link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css')}}">
+
+</head>
+<body>
+	<section class="channel-cover">
+		<img src="{{ url_for('static',filename='img/banner.jpg')}}" alt="">
+	</section><!--channel-cover end-->
+
+	<section class="videso_section">
+		<div class="info-pr-sec">
+			<div class="container">
+
+				<div class="search_form">
+					<form>
+						<input type="text" name="search" placeholder="Search Videos">
+						<button type="submit">
+							<i class="icon-search"></i>
+						</button>
+					</form>
+				</div>
+				<div class="clearfix" style="font-size:20px"><h1 id="route">
+
+				</h1></div>
+			</div>
+		</div><!--info-pr-sec end-->
+		<div class="tab-content p-0" id="myTabContent">
+		  	<div class="tab-pane fade show active" id="vvideo_tabz" role="tabpanel" aria-labelledby="videos_taab">
+		  		<div class="videso_tb_details">
+		  			<div class="container">
+
+						{% if folderData | length > 0 %}
+						<div class="vidz_sec">
+							<h3>文件夹</h3>
+							<div class="vidz_list">
+								<div class="row">
+									{% for i in folderData %}
+									<div class="col-lg-2 col-md-2 col-sm-3 col-4 full_wdth">
+										<div class="videoo">
+											<div class="vid_thumbainl">
+												<a href="{{ i.toSrc }}" title="">
+													<img src="{{ url_for('static',filename='icon/folder.png') }}" style="max-height:300px">
+												</a>
+											</div><!--vid_thumbnail end-->
+											<div class="video_info">
+												<p style="word-wrap:break-word;">{{ i.folderName }}</p>
+												<h4><a href="#" title="">newfox media</a> <span class="verify_ic"><i class="icon-tick"></i></span></h4>
+												<span>686K views .<small class="posted_dt">1 week ago</small></span>
+											</div>
+										</div><!--videoo end-->
+									</div>
+									{% endfor %}
+								</div>
+							</div><!--vidz_list end-->
+						</div><!--vidz_videos end-->
+						{% endif %}
+
+						{% if data | length > 0 %}
+			  			<div class="vidz_sec">
+							<h3>文件</h3>
+							<div class="vidz_list">
+								<div class="row">
+									{% for i in data %}
+									<div class="col-lg-2 col-md-2 col-sm-3 col-4 full_wdth">
+										<div class="videoo">
+											<div class="vid_thumbainl">
+												<a href="{{ url_for('static',filename=i.url) }}" title="">
+													<img src="{{ i.imgSrc }}" style="max-height:300px">
+													<span class="vid-time">{{ i.size }}</span>
+													<span class="watch_later">
+														<i>{{ i.suffix }}</i>
+													</span>
+												</a>
+											</div><!--vid_thumbnail end-->
+											<div class="video_info">
+												<p style="word-wrap:break-word;">{{ i.fileName }}</p>
+												<h4><a href="#" title="">newfox media</a> <span class="verify_ic"><i class="icon-tick"></i></span></h4>
+												<span>686K views .<small class="posted_dt">1 week ago</small></span>
+											</div>
+										</div><!--videoo end-->
+									</div>
+									{% endfor %}
+								</div>
+							</div><!--vidz_list end-->
+						</div><!--vidz_videos end-->
+						{% endif %}
+					</div>
+		  		</div><!--videso_tb_details end-->
+		  	</div>
+		</div>
+	</section><!--Featured Videos end-->
+
+</div><!--wrapper end-->
+
+
+
+<script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+<!--<script src="assetes/js/popper.min.js"></script>-->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+	var route = "{{ route | safe }}"
+	var domain = window.location.host;
+	var list = route.split('/');
+	var src = '/file'
+	for(var i = 1; i < list.length; i++){
+		src += ('/' + list[i])
+		$("#route").append('<a href="http://' + domain + '/' + src + '"><span style="color:#00BFFF">' + list[i] + '</span>/</a>')
+	}
+	console.log(domain);
+</script>
+</body>
+</html>
