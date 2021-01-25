@@ -1,15 +1,24 @@
 static/src
-.DS_Store*config.txt*config 2.txt*config 3.txt
-f3*f2*f1
-static/src/f3
-config.txt*config 2.txt
+.DS_Store
+DownloadSite
+static/src/DownloadSite
 
-static/src/f2
+__pycache__*common*assets
+static/src/DownloadSite/__pycache__
+main.cpython-37.pyc
 
+static/src/DownloadSite/common
+img.py*item.py*__init__.py*fileMaster.py
+__pycache__
+static/src/DownloadSite/common/__pycache__
+item.cpython-37.pyc*__init__.cpython-37.pyc*fileMaster.cpython-37.pyc
 
-static/src/f1
-.DS_Store* .gif
-f4
-static/src/f1/f4
+static/src/DownloadSite/assets
+.DS_Store
+js*css
+static/src/DownloadSite/assets/js
+bootstrap.min.js*jquery-3.3.1.slim.min.js*popper.min.js
 
+static/src/DownloadSite/assets/css
+font-awesome.min.css*bootstrap-4.3.1.css
 
