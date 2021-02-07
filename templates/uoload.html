@@ -17,15 +17,15 @@
   </nav>
 <div class="m-5">
     <form>
-        <input id="input" type="file" class="file" data-preview-file-type="text" multiple>
+        <input id="input" type="file" class="file" name="file" data-preview-file-type="text" multiple>
     </form>
-</div>
-  
+</div>  
  
 <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
 <!--<script src="assetes/js/popper.min.js"></script>-->
 <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="{{url_for('static', filename='js/fileinput.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/common.js')}}"></script>
 <script>
 //初始化fileinput
 initFileInput();
@@ -35,8 +35,7 @@ function initFileInput() {
         dropZoneTitle: '…支持多文件上传',
         uploadUrl: "/u", //上传的地址
         uploadExtraData: function(previewId, index) {   //该插件可以向您的服务器方法发送附加数据。这可以通过uploadExtraData在键值对中设置为关联数组对象来完成。所以如果你有设置uploadExtraData={id:'kv-1'}，在PHP中你可以读取这些数据$_POST['id']
-            var id = $('#id').val();
-            return {seriesId: id};
+            return {where: b64Decode("{{where}}")};
         },
         uploadAsync: true, //默认异步上传
         showUpload: true, //是否显示上传按钮
@@ -83,6 +82,7 @@ $('#uploadImg').on('filebatchuploadcomplete',function (event,files,extra) {
         closeSelf();
     },1000);
 });
+
 </script>
 </body>
 

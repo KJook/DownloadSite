@@ -1,13 +1,28 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 from common.fileMaster import getfile, getsize, toSrc_floder
 from common.item import getImg
 from main import reloadFileConfig
+import os
 
 app = Flask(__name__)
 
+@app.route("/u", methods=["POST"])
+def getfile():
+    where = os.sep.join(request.form["where"].split('/'))
+    
+    
+    file = request.files['file']
+    file.save(os.sep.join(["static", request.form["where"],file.filename]))
+    reloadFileConfig()
+    return {
+        "code": "0",
+        "msg": "上传成功"
+    }
+
 @app.route("/upload")
 def uploader():
-    return render_template('uoload.html')
+    where = request.args.get("where")
+    return render_template('uoload.html', where=where)
 
 @app.route("/")
 def i():

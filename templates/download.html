@@ -17,18 +17,16 @@
 	<section class="videso_section">
 		<div class="info-pr-sec">
 			<div class="container">
-
-				<div class="search_form">
-					<form>
-						<input type="text" name="search" placeholder="Search">
-						<button type="submit">
-							<i class="icon-search"></i>
+				<div class="row">
+					<div class="col-md-8" style="font-size:30px;">
+						<h1 id="route"></h1>
+					</div>
+					<div class="col-md-4">
+						<button type="button" class="btn btn-default btn-xs" onclick="gotoupload()">
+   							 upload
 						</button>
-					</form>
+					</div>
 				</div>
-				<div class="clearfix" style="font-size:20px"><h1 id="route">
-
-				</h1></div>
 			</div>
 		</div><!--info-pr-sec end-->
 		<div class="tab-content p-0" id="myTabContent">
@@ -102,15 +100,19 @@
 <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
 <!--<script src="assetes/js/popper.min.js"></script>-->
 <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+<script src="{{url_for('static', filename="js/common.js")}}"></script>
 <script>
+	
 	var route = "{{ route | safe }}"
 	var domain = window.location.host;
 	var list = route.split('/');
 	var src = '/file'
 	for(var i = 1; i < list.length; i++){
 		src += ('/' + list[i])
-		$("#route").append('<a href="http://' + domain + '/' + src + '"><span style="color:#00BFFF">' + list[i] + '</span>/</a>')
+		$("#route").append('<a href="http://' + domain + src + '"><span style="color:#00BFFF">' + list[i] + '</span>/</a>')
+	}
+	function gotoupload(){
+		window.open("http://" + domain + "/upload?where=" + b64Encode(route));
 	}
 	console.log(domain);
 </script>
