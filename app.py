@@ -5,6 +5,9 @@ from main import reloadFileConfig
 
 app = Flask(__name__)
 
+@app.route("/upload")
+def uploader():
+    return render_template('uoload.html')
 
 @app.route("/")
 def i():
@@ -52,4 +55,4 @@ def index(name):
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0")
+    app.run(debug=True)

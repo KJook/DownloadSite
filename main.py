@@ -1,6 +1,5 @@
 import os
 
-
 def reloadFileConfig():
     fileDir = os.sep.join(["static", "src"])  # 以分隔符连接路径名
     fileList = []

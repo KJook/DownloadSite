@@ -8,17 +8,17 @@ static/src/DownloadSite/__pycache__
 main.cpython-37.pyc
 
 static/src/DownloadSite/common
-img.py*item.py*__init__.py*fileMaster.py
+__init__.py*img.py*fileMaster.py*item.py
 __pycache__
 static/src/DownloadSite/common/__pycache__
-item.cpython-37.pyc*__init__.cpython-37.pyc*fileMaster.cpython-37.pyc
+fileMaster.cpython-37.pyc*item.cpython-37.pyc*__init__.cpython-37.pyc
 
 static/src/DownloadSite/assets
 .DS_Store
-js*css
-static/src/DownloadSite/assets/js
-bootstrap.min.js*jquery-3.3.1.slim.min.js*popper.min.js
-
+css*js
 static/src/DownloadSite/assets/css
-font-awesome.min.css*bootstrap-4.3.1.css
+bootstrap-4.3.1.css*font-awesome.min.css
+
+static/src/DownloadSite/assets/js
+jquery-3.3.1.slim.min.js*bootstrap.min.js*popper.min.js
 
