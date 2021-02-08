@@ -1,70 +1,77 @@
 from flask import Flask, render_template, url_for, request
-from common.fileMaster import getfile, getsize, toSrc_floder
-from common.item import getImg
-from main import reloadFileConfig
+import common.fileControl as FileController
+import common.itemControl as ItemController
+
 import os
 
 app = Flask(__name__)
 
+
+@app.route("/createFolder", methods=["POST"])
+def create_folder():
+    if request.method == "POST":
+        where = request.form["where"]
+        name = request.form["name"]
+        print(where)
+
+
 @app.route("/u", methods=["POST"])
 def getfile():
     where = os.sep.join(request.form["where"].split('/'))
-    
-    
     file = request.files['file']
-    file.save(os.sep.join(["static", request.form["where"],file.filename]))
-    reloadFileConfig()
+    file.save(os.sep.join(["static", request.form["where"], file.filename]))
+    FileController.reload_file_list_config()
     return {
         "code": "0",
         "msg": "上传成功"
     }
 
+
 @app.route("/upload")
 def uploader():
     where = request.args.get("where")
-    return render_template('uoload.html', where=where)
+    return render_template('upload.html', where=where)
+
 
 @app.route("/")
 def i():
-    reloadFileConfig()
+    FileController.reload_file_list_config()
     return render_template('index.html')
 
 
 @app.route("/file/<path:name>")
 def index(name):
-
-    f = getfile(name)
-
+    f = FileController.get_file(name)
     if f[1] == 200 and name[0:3] == 'src':
 
-        fileList = f[0][0]
-        folderList = f[0][1]
+        file_list = f[0][0]
+        folder_list = f[0][1]
         data = []
 
-        if len(fileList) > 0:
-            for i in fileList:
-                if i == '':
+        if len(file_list) > 0:
+            for file in file_list:
+                if file == '':
                     break
-                imgDate = getImg(name, i)
+                img_date = ItemController.get_img(name, file)
                 data.append({
-                    "fileName": i,
-                    "imgSrc": url_for('static', filename=imgDate[0]),
-                    "size": getsize(name, i),
-                    "suffix": imgDate[1],
-                    "url": name + "/" + i
+                    "fileName": file,
+                    "imgSrc": url_for('static', filename=img_date[0]),
+                    "size": FileController.get_size(name, file),
+                    "suffix": img_date[1],
+                    "url": name + "/" + file
                 })
 
-        folderData = []
-        if len(folderList) > 0:
-            for i in folderList:
-                if i == '':
+        folder_data = []
+        if len(folder_list) > 0:
+            for folder in folder_list:
+                if folder == '':
                     break
-                folderData.append({
-                    "folderName": i,
-                    "toSrc": "/file/" + name + "/" + i
+                folder_data.append({
+                    "folderName": folder,
+                    "toSrc": "/file/" + name + "/" + folder
                 })
 
-        return render_template('download.html', data=data, folderData=folderData, route="/"+name)
+        return render_template('download.html', data=data, folderData=folder_data, route="/" + name)
     else:
         return render_template('404.html')
 

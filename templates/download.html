@@ -18,13 +18,17 @@
 		<div class="info-pr-sec">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-8" style="font-size:30px;">
+					<div class="col-md-8" style="font-size:20px;">
 						<h1 id="route"></h1>
 					</div>
 					<div class="col-md-4">
-						<button type="button" class="btn btn-default btn-xs" onclick="gotoupload()">
-   							 upload
+						<button type="button" class="btn btn-default btn-xs" onclick="goToUpload()">
+   							 Upload
 						</button>
+						<button type="button" class="btn btn-default btn-xs" onclick="creatFolder()">
+							Create Folder
+						</button>
+						
 					</div>
 				</div>
 			</div>
@@ -71,10 +75,13 @@
 												<a href="{{ url_for('static',filename=i.url) }}" title="">
 													<img src="{{ i.imgSrc }}" style="max-height:300px">
 													<span class="vid-time">{{ i.size }}</span>
+													{% if not i.suffix == "" %}
 													<span class="watch_later">
 														<i>{{ i.suffix }}</i>
 													</span>
+													{% endif %}
 												</a>
+
 											</div><!--vid_thumbnail end-->
 											<div class="video_info">
 												<p style="word-wrap:break-word;">{{ i.fileName }}</p>
@@ -111,10 +118,40 @@
 		src += ('/' + list[i])
 		$("#route").append('<a href="http://' + domain + src + '"><span style="color:#00BFFF">' + list[i] + '</span>/</a>')
 	}
-	function gotoupload(){
+	function goToUpload(){
 		window.open("http://" + domain + "/upload?where=" + b64Encode(route));
 	}
+	
+	function creatFolder(){
+		
+		var folderName = prompt("文件夹的名字：");
+		if (folderName == ""){
+
+		}
+		list = {{ folderData | safe }}
+
+		for (let i = 0; i < list.length; i++) {
+			console.log(list[i])
+			if (list[i].folderName == folderName) {
+				alert("文件夹已存在")
+				return;
+			}
+		}
+		$.ajax({
+            type:"POST",
+            url:"/createFolder",
+            dataType:"json",
+			data:{where: route, name: folderName},
+            success:function(data){
+				location.reload();
+            },
+            error:function(jqXHR){
+                console.log("Error: "+jqXHR.status);
+            }
+        });
+	}
 	console.log(domain);
+
 </script>
 </body>
 </html>

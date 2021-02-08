@@ -1,14 +1,4 @@
-def return_img_stream(src, name):
-    import base64
-    img_local_path = getImg(src, name)
-    img_stream = ''
-    with open(img_local_path, 'rb') as img_f:
-        img_stream = img_f.read()
-        img_stream = base64.b64encode(img_stream)
-    return img_stream
-
-
-def getSuffix(name):
+def get_suffix(name):
     suffix = name.split(".")
     if len(suffix) == 1 or suffix[0] == '':
         return ''
@@ -16,8 +6,8 @@ def getSuffix(name):
     return suffix[-1]
 
 
-def getImg(src, name):
-    suffix = getSuffix(name).lower()
+def get_img(src, name):
+    suffix = get_suffix(name).lower()
     path = ''
     if suffix == 'js':
         path = 'icon/js.png'
