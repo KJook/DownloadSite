@@ -107,7 +107,7 @@
 <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
 <!--<script src="assetes/js/popper.min.js"></script>-->
 <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="{{url_for('static', filename="js/common.js")}}"></script>
+<script src="{{url_for('static', filename='js/common.js')}}"></script>
 <script>
 	
 	var route = "{{ route | safe }}"
@@ -143,15 +143,14 @@
             dataType:"json",
 			data:{where: route, name: folderName},
             success:function(data){
-				location.reload();
+				window.location.reload();
             },
             error:function(jqXHR){
                 console.log("Error: "+jqXHR.status);
             }
         });
-	}
-	console.log(domain);
 
+	}
 </script>
 </body>
 </html>

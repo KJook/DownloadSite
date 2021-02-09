@@ -3,7 +3,14 @@ from .other import *
 
 
 def create_folder(where, name):
-    file_dir = os.sep.join(["static", where])
+    file_dir = os.sep.join(["static", where, name])
+    try:
+        os.mkdir(file_dir, 0o755)
+        reload_file_list_config()
+    except OSError as e:
+        return str(e), 500
+    else:
+        return "ok", 200
 
 
 def reload_file_list_config():

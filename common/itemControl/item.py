@@ -2,7 +2,6 @@ def get_suffix(name):
     suffix = name.split(".")
     if len(suffix) == 1 or suffix[0] == '':
         return ''
-
     return suffix[-1]
 
 

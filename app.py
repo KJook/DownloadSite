@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, jsonify, make_response
 import common.fileControl as FileController
 import common.itemControl as ItemController
 
@@ -9,10 +9,13 @@ app = Flask(__name__)
 
 @app.route("/createFolder", methods=["POST"])
 def create_folder():
-    if request.method == "POST":
-        where = request.form["where"]
-        name = request.form["name"]
-        print(where)
+    where = request.form["where"]
+    name = request.form["name"]
+    file_handle = FileController.create_folder(where, name)
+    if file_handle[1] == 200:
+        return make_response(jsonify({"code": "0", "error": "null"}), 200)
+    else:
+        return make_response({"code": 1, "error": file_handle[0]}, 500)
 
 
 @app.route("/u", methods=["POST"])
