@@ -1,3 +1,5 @@
+import os
+
 
 def size_format(size):
     if size < 1000:
@@ -10,3 +12,7 @@ def size_format(size):
         return '%.1f' % float(size / 1000000000) + 'GB'
     elif 1000000000000 <= size:
         return '%.1f' % float(size / 1000000000000) + 'TB'
+
+
+def url_path(w):
+    return os.sep.join(w.split('/'))

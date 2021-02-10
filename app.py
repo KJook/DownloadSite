@@ -1,10 +1,35 @@
+import os
+
 from flask import Flask, render_template, url_for, request, jsonify, make_response
+
 import common.fileControl as FileController
 import common.itemControl as ItemController
 
-import os
+import base64
+import urllib.parse
 
 app = Flask(__name__)
+
+
+@app.route("/d", methods=["POST"])
+def delet():
+    raw_full_path = request.form["w"]
+    file_list = request.form["fi"].split('*')
+    folder_list = request.form["fo"].split('*')
+
+    full_path = urllib.parse.unquote(base64.b64decode(raw_full_path).decode("utf-8"))
+    try:
+        if not file_list[0] == '':
+            for file in file_list:
+                FileController.move_to_trash(full_path, file)
+        if not folder_list[0] == '':
+            for folder in folder_list:
+                FileController.move_to_trash(full_path, folder)
+    except OSError as e:
+        return make_response(jsonify({"code": "0", "error": str(e)}), 500)
+    else:
+        return make_response(jsonify({"code": "0", "error": "null"}), 200)
+
 
 
 @app.route("/createFolder", methods=["POST"])
@@ -20,7 +45,6 @@ def create_folder():
 
 @app.route("/u", methods=["POST"])
 def getfile():
-    where = os.sep.join(request.form["where"].split('/'))
     file = request.files['file']
     file.save(os.sep.join(["static", request.form["where"], file.filename]))
     FileController.reload_file_list_config()

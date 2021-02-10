@@ -1,9 +1,23 @@
 import os
+import time
+import shutil
 from .other import *
 
 
+def move_to_trash(full_path, f):
+    f_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    shutil.move(os.sep.join(['static', full_path, f]),  os.sep.join(['static', 'trash']))
+    os.rename(os.sep.join(['static', 'trash', f]), os.sep.join(['static', 'trash', f_time + f]))
+    reload_file_list_config()
+
+
 def create_folder(where, name):
-    file_dir = os.sep.join(["static", where, name])
+    if '/' in name or '*' in name or '\\' in name:
+        return "folder name is invalid", 500
+    if (not where[0:4] == '/src') or ('.' in where):
+        return "a big problem is caused. maybe some guy is trying to attack this website.", 500
+
+    file_dir = os.sep.join(["static", url_path(where), name])
     try:
         os.mkdir(file_dir, 0o755)
         reload_file_list_config()
@@ -25,14 +39,12 @@ def reload_file_list_config():
         f.truncate()
         for i in range(len(file_list)):
             f.write(file_list[i][0] + '\n')
-            print('*'.join(file_list[i][1]))
             f.write('*'.join(file_list[i][1]) + '\n')
             f.write('*'.join(file_list[i][2]) + '\n')
 
 
 def get_file(route):
     route = "static" + os.sep + route
-
     try:
         with open('./config.txt') as f:
             while True:

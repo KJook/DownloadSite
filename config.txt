@@ -1,28 +1,13 @@
 static/src
-.DS_Store
-your*okk*ddd*bbb*ss*aaa*sss*my*DownloadSite
-static/src/your
 
-
-static/src/okk
-
-
-static/src/ddd
-
-
-static/src/bbb
-
-
-static/src/ss
-
-
-static/src/aaa
+dddd*sss*dsdd*DownloadSite*我*sasasasa*sasasas
+static/src/dddd
 
 
 static/src/sss
 
 
-static/src/my
+static/src/dsdd
 
 
 static/src/DownloadSite
@@ -33,4 +18,13 @@ __init__.py*img.py*fileMaster.py*item.py
 __pycache__
 static/src/DownloadSite/common/__pycache__
 fileMaster.cpython-37.pyc*item.cpython-37.pyc*__init__.cpython-37.pyc
+
+static/src/我
+
+
+static/src/sasasasa
+
+
+static/src/sasasas
+
 
